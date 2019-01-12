@@ -3,7 +3,7 @@ from .constants import *
 
 def open_log_file(file_path):
     """Reads the content of a text file and returns it as a string."""
-    with open(file_path) as file:
+    with open(file_path, "r") as file:
         lines = file.read()
     return lines
 
@@ -112,3 +112,5 @@ def parse(log_path):
     """Reads a Quake 3 log file and returns a dict with the games's statistics."""
     game_log = open_log_file(log_path)
     return build_output(game_log)
+
+    
