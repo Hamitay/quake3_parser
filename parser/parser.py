@@ -83,6 +83,14 @@ def build_game_output(game):
 
     return output
 
+def build_game_key(num):
+    """Returns a key to be used for the game's statistics output.
+
+    The format of the key is:
+        game_{index}
+    """
+    return GAME_KEY_PATTERN.format(str(num))
+
 def build_output(game_log):
     """Reads a Quake 3 game logs and returns a dict with the game's statistics.
 
@@ -103,7 +111,7 @@ def build_output(game_log):
     
     output = {}
     for game in games:
-        key = GAME_KEY_PATTERN.format(str(games.index(game) + 1))
+        key = build_game_key(games.index(game)+1)
         output[key] = build_game_output(game)
 
     return output

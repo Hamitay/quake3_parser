@@ -84,6 +84,11 @@ class TestParser:
 
         assert output == self.expected_response
 
+    def test_build_key(self):
+        key = parser.build_game_key(123)
+
+        assert "game_123" == key
+
     def test_parse(self):
         parsed_output = parser.parse(self.log_path)
 
