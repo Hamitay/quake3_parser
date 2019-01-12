@@ -1,0 +1,47 @@
+{
+    "game_1": {
+        "total_kills": 4,
+        "players": [
+            "Dono da Bola",
+            "Mocinha",
+            "Isgalamido",
+            "Zeh"
+        ],
+        "kills": {
+            "Dono da Bola": -1,
+            "Mocinha": 0,
+            "Isgalamido": 1,
+            "Zeh": -2
+        }
+    },
+    "game_2": {
+        "total_kills": 105,
+        "players": [
+            "Dono da Bola",
+            "Isgalamido",
+            "Zeh",
+            "Assasinu Credi"
+        ],
+        "kills": {
+            "Dono da Bola": 9,
+            "Isgalamido": 19,
+            "Zeh": 20,
+            "Assasinu Credi": 12
+        }
+    },
+    "game_3": {
+        "total_kills": 14,
+        "players": [
+            "Dono da Bola",
+            "Isgalamido",
+            "Zeh",
+            "Assasinu Credi"
+        ],
+        "kills": {
+            "Dono da Bola": 0,
+            "Isgalamido": 2,
+            "Zeh": 1,
+            "Assasinu Credi": -1
+        }
+    }
+}
