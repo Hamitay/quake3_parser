@@ -24,7 +24,12 @@ def get_players(game):
     for user in user_connects:
         players.add(player_delimiter.sub("", user))
     
-    return list(players)
+    player_list = list(players)
+
+    #We sort the player list to assure that this method output is always the same
+    player_list.sort()
+
+    return player_list
 
 def get_player_kills(game, player):
     """Returns the number of kills a player has made on a given game."""
@@ -52,3 +57,28 @@ def get_total_kills(game, players):
         player_score[player] = (player_kills - player_world_deaths)
 
     return (total_kills, player_score)
+
+def build_game_output(game):
+    """Returns a dictionary with the game's output.
+
+    An example of output's structure is as follows:
+    {
+        total_kills: 7,
+        players: [player_0, player_1, player_2],
+        kills: {
+            player_0: 3,
+            player_1: -2,
+            player_2: 6
+        }
+    }
+    """
+
+    players = get_players(game)
+    total_kills = get_total_kills(game, players)
+
+    output = {}
+    output[PLAYER_KEY] = players
+    output[TOTAL_KILLS_KEY] = total_kills[0]
+    output[KILLS_KEY] = total_kills[1]
+
+    return output

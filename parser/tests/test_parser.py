@@ -13,6 +13,11 @@ class TestParser:
         with open(response_path) as response_json:
             self.expected_response = json.load(response_json)
 
+        #Sorting, since player order doesn't matter
+        self.expected_response["game_1"]["players"].sort()
+        self.expected_response["game_2"]["players"].sort()
+        self.expected_response["game_3"]["players"].sort()
+
     def test_split_games(self):
         games = parser.split_games(self.game_log)
         assert len(self.expected_response) == len(games)
@@ -20,14 +25,6 @@ class TestParser:
     def test_get_players(self):
         games = parser.split_games(self.game_log)
         players = [parser.get_players(game) for game in games]
-
-        #Sorting, since order doesn't matter
-        self.expected_response["game_1"]["players"].sort()
-        self.expected_response["game_2"]["players"].sort()
-        self.expected_response["game_3"]["players"].sort()
-        players[0].sort()
-        players[1].sort()
-        players[2].sort()
 
         assert self.expected_response["game_1"]["players"] == players[0]
         assert self.expected_response["game_2"]["players"] == players[1]
@@ -73,3 +70,11 @@ class TestParser:
 
         assert expected_total == total_kills[0]
         assert expected_kills == total_kills[1]
+
+    def test_build_game_output(self):
+        games = parser.split_games(self.game_log)
+        output = [parser.build_game_output(game) for game in games]
+
+        assert output[0] == self.expected_response["game_1"]
+        assert output[1] == self.expected_response["game_2"]
+        assert output[2] == self.expected_response["game_3"]
