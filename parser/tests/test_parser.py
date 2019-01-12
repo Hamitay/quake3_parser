@@ -5,10 +5,10 @@ import json
 class TestParser:
     def setup(self):
         abs_path = os.path.dirname(__file__)
-        log_path = abs_path + "/resources/test_games.log"
+        self.log_path = abs_path + "/resources/test_games.log"
         response_path = abs_path + "/resources/test_response.json"
 
-        self.game_log = parser.open_log_file(log_path)
+        self.game_log = parser.open_log_file(self.log_path)
 
         with open(response_path) as response_json:
             self.expected_response = json.load(response_json)
@@ -78,3 +78,13 @@ class TestParser:
         assert output[0] == self.expected_response["game_1"]
         assert output[1] == self.expected_response["game_2"]
         assert output[2] == self.expected_response["game_3"]
+
+    def test_build_output(self):
+        output = parser.build_output(self.game_log)
+
+        assert output == self.expected_response
+
+    def test_parse(self):
+        parsed_output = parser.parse(self.log_path)
+
+        assert parsed_output == self.expected_response

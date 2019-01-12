@@ -10,4 +10,5 @@ WORLD_DEATHS_REGEX = r"<world> killed {} by"
 KILLS_KEY = "kills"
 TOTAL_KILLS_KEY = "total_kills"
 PLAYER_KEY = "players"
+GAME_KEY_PATTERN = "game_{}"
 

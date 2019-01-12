@@ -7,10 +7,10 @@ def open_log_file(file_path):
         lines = file.read()
     return lines
 
-def split_games(log_lines):
+def split_games(game_log):
     """Splits an Quake 3 game log into a list of games."""
     game_pattern = GAME_PATTERN_REGEX
-    return re.findall(game_pattern, log_lines)
+    return re.findall(game_pattern, game_log)
 
 def get_players(game):
     """Returns a list of players on a given game."""
@@ -82,3 +82,33 @@ def build_game_output(game):
     output[KILLS_KEY] = total_kills[1]
 
     return output
+
+def build_output(game_log):
+    """Reads a Quake 3 game logs and returns a dict with the game's statistics.
+
+        An example of output's structure is as follows:
+        {
+            "game_1": {
+                total_kills: 7,
+                players: [player_0, player_1, player_2],
+                kills: {
+                    player_0: 3,
+                    player_1: -2,
+                    player_2: 6
+                }
+            }
+        }    
+    """
+    games = split_games(game_log)
+    
+    output = {}
+    for game in games:
+        key = GAME_KEY_PATTERN.format(str(games.index(game) + 1))
+        output[key] = build_game_output(game)
+
+    return output
+
+def parse(log_path):
+    """Reads a Quake 3 log file and returns a dict with the games's statistics."""
+    game_log = open_log_file(log_path)
+    return build_output(game_log)
