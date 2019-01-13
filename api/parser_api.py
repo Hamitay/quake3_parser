@@ -1,15 +1,17 @@
 from parser import parser
-from api import app
-from flask import jsonify
+from flask import jsonify, Blueprint
+from flask import current_app as app
 from . import exception, exception_messages
 from .constants import GAME_PATH_CONFIG
 
-@app.route('/games')
+parser_app = Blueprint("parser_api", __name__)
+
+@parser_app.route('/games')
 def get_all_games():
     response_data = parser.parse(app.config[GAME_PATH_CONFIG])
     return jsonify(response_data)
 
-@app.route('/games/<id>')
+@parser_app.route('/games/<id>')
 def get_game_by_id(id):
     try:
         id = int(id)
@@ -25,7 +27,7 @@ def get_game_by_id(id):
 
     return jsonify(response_data)
 
-@app.errorhandler(exception.ApiException)
+@parser_app.errorhandler(exception.ApiException)
 def handle_game_not_found(error):
     response = jsonify(error.message)
     response.status_code = error.status_code

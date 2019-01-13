@@ -1,11 +1,22 @@
-from api import parser_api
+from api.parser_api import parser_app
 from api import exception_messages
 from ..constants import GAME_PATH_CONFIG
 import os
 import pytest
 import json
+from flask import Flask
+
+def buildApp(gamelog):
+    """Builds a test instance of the api. This is used before every test."""
+    app = Flask(__name__)
+    app.config[GAME_PATH_CONFIG] = gamelog
+    app.register_blueprint(parser_app)
+    app = app.test_client()
+
+    return app
 
 class TestApiGetGames:
+
     def setup(self):
         abs_path = os.path.dirname(__file__)
         self.game_log_path = abs_path + "/resources/test_games.log"
@@ -21,8 +32,7 @@ class TestApiGetGames:
     @pytest.fixture(scope="class")
     def get_request(self):
         self.setup()
-        app = parser_api.app.test_client()
-        parser_api.app.config[GAME_PATH_CONFIG] = self.game_log_path
+        app = buildApp(self.game_log_path)
         return app.get("/games")
 
     def test_get_games_status_code(self, get_request):
@@ -46,25 +56,20 @@ class TestApiGetGameById:
         #Sorting, since player order doesn't matter
         self.expected_response["players"].sort()
 
-    def create_test_app(self):
-        app = parser_api.app.test_client()
-        parser_api.app.config[GAME_PATH_CONFIG] = self.game_log_path
-        return app
-
     @pytest.fixture(scope="class")
     def get_request(self):
         self.setup()
-        app = self.create_test_app()
+        app = buildApp(self.game_log_path)
         return app.get("/games/9")
 
     @pytest.fixture(scope="class")
     def get_invalid_request(self):
-        app = self.create_test_app()
+        app = buildApp(self.game_log_path)
         return app.get("/games/aa")
 
     @pytest.fixture(scope="class")
     def get_not_found_request(self):
-        app = self.create_test_app()
+        app = buildApp(self.game_log_path)
         return app.get("/games/999")
 
     def test_get_games_by_id_status_code(self, get_request):
