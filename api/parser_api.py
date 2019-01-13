@@ -11,7 +11,6 @@ def get_all_games():
 
 @app.route('/games/<id>')
 def get_game_by_id(id):
-
     try:
         id = int(id)
         if id < 0: raise ValueError
