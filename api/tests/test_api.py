@@ -1,7 +1,6 @@
 from api import parser_api
 from api import exception_messages
 import pytest
-from pytest_mock import mocker
 import json
 
 class TestApiGetGames:

@@ -14,6 +14,7 @@ def get_game_by_id(id):
 
     try:
         id = int(id)
+        if id < 0: raise ValueError
         game_key = parser.build_game_key(id)
         response_data = parser.parse("games.log")[game_key]
 
