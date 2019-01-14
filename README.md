@@ -94,11 +94,11 @@ $ pip install -r requirements.txt
 
 3. Setar as variaveis de ambiente:
 ```
-$ EXPORT FLASK_APP=api
+$ export FLASK_APP=api
 ```
 Caso queira usar algum outro arquivo de log para testar a api, pode-se alterar o caminho alterando a seguinte variável
 ```
-$ EXPORT GAME_LOG_PATH=<caminho do .log>
+$ export GAME_LOG_PATH=<caminho do .log>
 ```
 4. Rodar a aplicação:
 ```
