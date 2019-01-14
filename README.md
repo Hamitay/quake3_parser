@@ -2,7 +2,7 @@
 
 O Quake 3 Parser é uma aplicação escrita em Python 3.6, com o auxilio do microframework [Flask](http://flask.pocoo.org/).
 
-A aplicação faz o parse de um log de um servidor de Quake 3 e expõe, por meio de uma API RESTful, as estatisticas de mortes de cada partida no seguinte formato:
+A aplicação faz o parse de um log de um servidor de Quake 3 e o expõe, por meio de uma API RESTful, as estatísticas de mortes de cada partida no seguinte formato:
 
 ```
     "game_1": {
@@ -30,19 +30,19 @@ A API possui dois endpoints:
 `/games` : retorna as estatísticas de todos os jogos
 
 ###### GET
-`/games/{id}` : retorna as estatísticas de um jogo específico
+`/games/{numero_do_jogo}` : retorna as estatísticas de um jogo específico
 
 ### Pré-requisitos
 Para rodar a aplicação é necessário ter instalado o [Python 3](https://www.python.org/downloads/) e o [pip](https://pip.pypa.io/en/stable/installing/)
 
-Também sugere-se que se tenha o [Docker](https://docs.docker.com/install/) e o [virtualenv](https://virtualenv.pypa.io/en/latest/installation/) instalado, apesar de não ser obrigatório.
+Também sugere-se que se tenha o [Docker](https://docs.docker.com/install/) e/ou [virtualenv](https://virtualenv.pypa.io/en/latest/installation/) instalado, apesar de não serem estritamente necessários.
 
 
 ### Rodando a aplicação
 Existem três possiveis maneiras de rodar a aplicação:
 
 #### Docker
-A maneira mais simples e rapida de executar a aplição é a partir do docker com o comando:
+A maneira mais simples e rápida de executar a aplicação é a partir do docker com o comando:
 
 ```
 $ docker run -p 5000:5000 henriqueamitay/quake_parser:v2
@@ -52,7 +52,7 @@ Que irá baixar a imagem já upada no [Docker-hub](https://cloud.docker.com/u/he
 
 
 #### Via scripts (virtualenv)
-O repositório possui dois scripts que sobem um _virtualenv_ e rodam a aplicação neste ambiente virtual. Apenas rode:
+O repositório possui dois scripts que provisionam um _virtualenv_ e rodam a aplicação neste ambiente virtual. Apenas rode:
 
 ```
 $ git clone git@github.com:Hamitay/quake3_parser.git
@@ -63,10 +63,10 @@ $ ./run_server.sh
 
 Com isso a API poderá ser utilizada em `127.0.0.1:5000`
 
-* **Observação**: Talvez seja necessário alterar o perssionamento destes scripts para poder executá-los.
+* **Observação**: Talvez seja necessário alterar o permissionamento destes scripts para poder executá-los.
 
 #### Manualmente
-Para rodar a aplição manualmente e no mesmo ambiente é necessário executar os seguintes passos:
+Para rodar a aplicação manualmente e no mesmo ambiente é necessário executar os seguintes passos:
 
 1. Clonar o repositório:
 ```
