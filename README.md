@@ -46,7 +46,7 @@ A API possui dois endpoints:
 `/games/{numero_do_jogo}` : retorna as estatísticas de um jogo específico
 
 ### Pré-requisitos
-Para rodar a aplicação é necessário ter instalado o [Python 3](https://www.python.org/downloads/) e o [pip](https://pip.pypa.io/en/stable/installing/)
+Para rodar a aplicação é necessário ter instalado o [Python 3.6](https://www.python.org/downloads/) e o [pip](https://pip.pypa.io/en/stable/installing/)
 
 Também sugere-se que se tenha o [Docker](https://docs.docker.com/install/) e/ou [virtualenv](https://virtualenv.pypa.io/en/latest/installation/) instalado, apesar de não serem estritamente necessários.
 
@@ -70,8 +70,8 @@ O repositório possui dois scripts que provisionam um _virtualenv_ e rodam a apl
 ```
 $ git clone git@github.com:Hamitay/quake3_parser.git
 $ cd quake3_parser
-$ ./setup_venv.sh
-$ ./run_server.sh
+$ bash setup_venv.sh
+$ bash run_server.sh
 ```
 
 Com isso a API poderá ser utilizada em `127.0.0.1:5000`
@@ -89,7 +89,7 @@ $ cd quake3_parser
 
 2. Instalar as dependências:
 ```
-$ pip install -r requirements.txt
+$ pip3 install -r requirements.txt
 ```
 
 3. Setar as variaveis de ambiente:
@@ -102,7 +102,7 @@ $ export GAME_LOG_PATH=<caminho do .log>
 ```
 4. Rodar a aplicação:
 ```
-$ python -m api.server
+$ python3.6 -m api.server
 ```
 
 Com isso a API poderá ser utilizada em `127.0.0.1:5000`

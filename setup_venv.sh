@@ -1,7 +1,8 @@
 #Saves current context
 export PREV_HAS_VENV=$HAS_VENV
 
-export HAS_VENV=$(pip list | grep virtualenv)
+export HAS_VENV=$(pip3 list | grep virtualenv)
+
 if [ -z "$HAS_VENV" ]
 then
     echo "Please install virtualenv with \"pip install virtualenv\" " 
