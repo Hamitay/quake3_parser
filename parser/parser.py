@@ -19,6 +19,7 @@ def get_players(game):
     user_connect_pattern = USER_CONNECT_REGEX
     user_connects = re.findall(user_connect_pattern, game)
 
+    #Extracts the players from each of the connected line
     player_delimiter = re.compile(USER_DELIMITER_REGEX)
     players = set()
     for user in user_connects:
