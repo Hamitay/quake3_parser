@@ -1,5 +1,18 @@
 # Quake 3 Parser
 
+   * [Quake 3 Parser](#quake-3-parser)
+   * [Endpoints](#endpoints)
+   * [Pré-requisitos](#pré-requisitos)
+   * [Rodando a aplicação](#rodando-a-aplicação)
+        * [Docker](#docker)
+        * [Via scripts (virtualenv)](#via-scripts-virtualenv)
+        * [Manualmente](#manualmente)
+    * [Testes](#testes)
+        * [Caso tenha utilizado Docker:](#caso-tenha-utilizado-docker)
+        * [Caso tenha utilizado os scripts:](#caso-tenha-utilizado-os-scripts)
+        * [Caso tenha instalado manualmente:](#caso-tenha-instalado-manualmente)
+    * [Discussões sobre a solução](#discussões-sobre-a-solução)
+
 O Quake 3 Parser é uma aplicação escrita em Python 3.6, com o auxilio do microframework [Flask](http://flask.pocoo.org/).
 
 A aplicação faz o parse de um log de um servidor de Quake 3 e o expõe, por meio de uma API RESTful, as estatísticas de mortes de cada partida no seguinte formato:
