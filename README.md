@@ -7,11 +7,11 @@
         * [Docker](#docker)
         * [Via scripts (virtualenv)](#via-scripts-virtualenv)
         * [Manualmente](#manualmente)
-    * [Testes](#testes)
+   * [Testes](#testes)
         * [Caso tenha utilizado Docker:](#caso-tenha-utilizado-docker)
         * [Caso tenha utilizado os scripts:](#caso-tenha-utilizado-os-scripts)
         * [Caso tenha instalado manualmente:](#caso-tenha-instalado-manualmente)
-    * [Discussões sobre a solução](#discussões-sobre-a-solução)
+   * [Discussões sobre a solução](#discussões-sobre-a-solução)
 
 O Quake 3 Parser é uma aplicação escrita em Python 3.6, com o auxilio do microframework [Flask](http://flask.pocoo.org/).
 
