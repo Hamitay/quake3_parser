@@ -42,7 +42,7 @@ class TestApiGetGames:
         assert "application/json" == get_request.content_type
 
     def test_data(self, get_request):
-        assert self.expected_response == json.loads(get_request.data)
+        assert self.expected_response == json.loads(get_request.data.decode('utf-8'))
 
 class TestApiGetGameById:
     def setup(self):
@@ -79,7 +79,7 @@ class TestApiGetGameById:
         assert "application/json" == get_request.content_type
 
     def test_get_games_by_id_response(self, get_request):
-        assert self.expected_response == json.loads(get_request.data)
+        assert self.expected_response == json.loads(get_request.data.decode('utf-8'))
 
     def test_bad_request_status_code(self, get_invalid_request):
         assert 400 == get_invalid_request.status_code
